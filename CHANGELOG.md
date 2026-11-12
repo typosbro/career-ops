@@ -1,5 +1,48 @@
 # Changelog
 
+## [1.41.0](https://github.com/career-ops-hq/career-ops/compare/career-ops-v1.40.0...career-ops-v1.41.0) (2026-11-12)
+
+
+### Features
+
+* **backup:** add backup.mjs to copy the User Layer to a drive or folder ([#6603](https://github.com/career-ops-hq/career-ops/issues/6603)) ([164d46b](https://github.com/career-ops-hq/career-ops/commit/164d46bb59bf1dbb01ed5d5fc857594b7b856611))
+* **coverage-check:** count other postings on host ([#6665](https://github.com/career-ops-hq/career-ops/issues/6665)) ([605a1e6](https://github.com/career-ops-hq/career-ops/commit/605a1e61ee2b0d269b371ebe4351180993ebbfee)), closes [#5564](https://github.com/career-ops-hq/career-ops/issues/5564)
+* **doctor:** expose data_root and project_root in --json output ([#6516](https://github.com/career-ops-hq/career-ops/issues/6516)) ([2be083d](https://github.com/career-ops-hq/career-ops/commit/2be083dd3a150caabd022b51787de354cbf1e395))
+* **employers:** contribute boards through an inbox, with an importer and a fold ([#6857](https://github.com/career-ops-hq/career-ops/issues/6857)) ([7a7b0df](https://github.com/career-ops-hq/career-ops/commit/7a7b0df9c3da3b71c64b7f25b5e6f502965d1986))
+* **employers:** open employer registry with schema, validator and CI ([#6856](https://github.com/career-ops-hq/career-ops/issues/6856)) ([246c9cc](https://github.com/career-ops-hq/career-ops/commit/246c9cc3947800391777b5c25bb039a939bab5ef))
+* **scanners:** add TopDev scanner - third Vietnamese source, via a browser ([#6795](https://github.com/career-ops-hq/career-ops/issues/6795)) ([62ba6f0](https://github.com/career-ops-hq/career-ops/commit/62ba6f0635c30d6d68d7cfe6c1a61687e5d8e034))
+
+
+### Bug Fixes
+
+* anchor relative tracker overrides and importer retries to the codebase ([#3952](https://github.com/career-ops-hq/career-ops/issues/3952)) ([ae6ea42](https://github.com/career-ops-hq/career-ops/commit/ae6ea421f97a597743fd243100c83fc78b0ba704))
+* **archive-posting:** file a capture for the ? employer under unknown ([#6827](https://github.com/career-ops-hq/career-ops/issues/6827)) ([505e732](https://github.com/career-ops-hq/career-ops/commit/505e73242ea8f1f09f3597089105fd83ea4c54cf))
+* **batch:** bind state-lock cleanup to each owner generation ([#6349](https://github.com/career-ops-hq/career-ops/issues/6349)) ([50cbbac](https://github.com/career-ops-hq/career-ops/commit/50cbbacd8521a4a1de6c46a12b2aa92ae3e8a36b))
+* **cover:** warn about stock wording and long dashes in cover letters ([#6808](https://github.com/career-ops-hq/career-ops/issues/6808)) ([4dda78d](https://github.com/career-ops-hq/career-ops/commit/4dda78d2869ad2937c8ecaf462528456dff533c3))
+* **eval:** read bolded summary keys in the Gemini evaluators ([#6825](https://github.com/career-ops-hq/career-ops/issues/6825)) ([775861b](https://github.com/career-ops-hq/career-ops/commit/775861bc4376ceab2fcdcbb3f128d0f0a93ac0ce))
+* **gemini-eval:** send the job description once ([#6826](https://github.com/career-ops-hq/career-ops/issues/6826)) ([a1b9631](https://github.com/career-ops-hq/career-ops/commit/a1b96313c88d68c21854575a7e055d5aa2246985))
+* **google:** keep other searches when one fails on its first page ([#6761](https://github.com/career-ops-hq/career-ops/issues/6761)) ([8eb9b9e](https://github.com/career-ops-hq/career-ops/commit/8eb9b9e8c071f5522a5b11bb40571a529d01998c))
+* **hired-wall:** sanitize the handle on the read path, not only at ingest ([#6883](https://github.com/career-ops-hq/career-ops/issues/6883)) ([2053859](https://github.com/career-ops-hq/career-ops/commit/20538596a9f43b19c2e834afad923f9563a47d37))
+* **ics:** reject a UTC offset with seconds field of 60 ([#6835](https://github.com/career-ops-hq/career-ops/issues/6835)) ([8db8e7b](https://github.com/career-ops-hq/career-ops/commit/8db8e7b3c814dd2ea7ee0995a01821be69bc7454)), closes [#6751](https://github.com/career-ops-hq/career-ops/issues/6751)
+* **modes:** mark the draft-answers heading with (draft) in every mode ([#4272](https://github.com/career-ops-hq/career-ops/issues/4272)) ([bd0c935](https://github.com/career-ops-hq/career-ops/commit/bd0c935d2ba84e80da66ef59071f9df80e9d647b))
+* **platsbanken:** mark the board partial when a keyword fails on its first page ([#6828](https://github.com/career-ops-hq/career-ops/issues/6828)) ([7f0c29f](https://github.com/career-ops-hq/career-ops/commit/7f0c29fd8a2ab1b8421441dc1bcdf6ed9be1c584))
+* **plugins:** let the recheck window release a checked-off pipeline entry ([#6832](https://github.com/career-ops-hq/career-ops/issues/6832)) ([e418149](https://github.com/career-ops-hq/career-ops/commit/e418149e0e696d6d7c37303d0f0247ca95a4d80f))
+* **providers:** claim Darwinbox tenants on darwinbox.com ([#6888](https://github.com/career-ops-hq/career-ops/issues/6888)) ([0cb75d5](https://github.com/career-ops-hq/career-ops/commit/0cb75d5d6a1d36a822a35cc6203bf7a5fb2bdbcb))
+* **providers:** mark partly read Darwinbox boards as truncated ([#6890](https://github.com/career-ops-hq/career-ops/issues/6890)) ([58836f1](https://github.com/career-ops-hq/career-ops/commit/58836f1a0326bd31c6d68bebbdd4ff79b7b93d8a))
+* **role-clarity:** accept a Reports to name that starts with a non-AS… ([#6785](https://github.com/career-ops-hq/career-ops/issues/6785)) ([1e4ff8e](https://github.com/career-ops-hq/career-ops/commit/1e4ff8eb53ae64818b71f4d02df88d828eeeab81))
+* **scan-ats-full:** count every Workable feed employer as a board, like the tenants of other sources ([#6818](https://github.com/career-ops-hq/career-ops/issues/6818)) ([770408e](https://github.com/career-ops-hq/career-ops/commit/770408e59fd1ffe8cf9e9955336a6f5eab7407f2))
+* **scan:** fold whitespace in the location filter ([#6841](https://github.com/career-ops-hq/career-ops/issues/6841)) ([df42a28](https://github.com/career-ops-hq/career-ops/commit/df42a289f8d12363a3aa0f9f861ff66ca510b314))
+* **score:** claim only levers that move the score ([#6705](https://github.com/career-ops-hq/career-ops/issues/6705)) ([58e32f8](https://github.com/career-ops-hq/career-ops/commit/58e32f831c4c3ebfacde878c08bca4f59721d4c9))
+* **seeds:** read a16z's embedded company list and probe Ashby and Lever too ([#6809](https://github.com/career-ops-hq/career-ops/issues/6809)) ([323f1aa](https://github.com/career-ops-hq/career-ops/commit/323f1aa004f7508398563176d3512f97ec3b3452))
+* **smartrecruiters:** say when the page cap cuts a board short; let an entry raise it ([#6799](https://github.com/career-ops-hq/career-ops/issues/6799)) ([826515e](https://github.com/career-ops-hq/career-ops/commit/826515e883416b93702cf1044dcb15476d51a429))
+* **successfactors:** warn when a cap truncates a board; opt-in max_pages/max_jobs ([#6697](https://github.com/career-ops-hq/career-ops/issues/6697)) ([10ebd4f](https://github.com/career-ops-hq/career-ops/commit/10ebd4fcb4b2bbbf177dbbe123671e829ac7008f))
+* **tests:** derive the Git Bash from the git on PATH, not two fixed roots ([#6886](https://github.com/career-ops-hq/career-ops/issues/6886)) ([d917b98](https://github.com/career-ops-hq/career-ops/commit/d917b98ce48ae23864c8c8957a34f55e5f4904b6))
+* **tests:** support user-authored named CV template variants in theme-style ([#6515](https://github.com/career-ops-hq/career-ops/issues/6515)) ([d41ace2](https://github.com/career-ops-hq/career-ops/commit/d41ace27cfbdb1ff6a77184676bdd7f67658e09a))
+* **tests:** use retry-safe rmSync in tracker-index-first-build to prevent Windows EPERM errors ([#6853](https://github.com/career-ops-hq/career-ops/issues/6853)) ([c396282](https://github.com/career-ops-hq/career-ops/commit/c396282bf782015991e4ac862d701114ef77edac))
+* **url-key:** key SmartRecruiters postings on company and posting id ([#6855](https://github.com/career-ops-hq/career-ops/issues/6855)) ([d95f588](https://github.com/career-ops-hq/career-ops/commit/d95f588e161671afc077fc6fea60b10b53054f2c))
+* **validators:** answer --help in the plugin registry and untrusted-content checks ([#6829](https://github.com/career-ops-hq/career-ops/issues/6829)) ([fbcc1e6](https://github.com/career-ops-hq/career-ops/commit/fbcc1e6d635a191450f1e37bbccb496422ad5ce9))
+* **web:** render dashboard CVs on the profile's page_format ([#6839](https://github.com/career-ops-hq/career-ops/issues/6839)) ([fc3034f](https://github.com/career-ops-hq/career-ops/commit/fc3034f64339326b0c754d42b98b9692c0e9b1b5))
+
 ## [1.40.0](https://github.com/career-ops-hq/career-ops/compare/career-ops-v1.39.0...career-ops-v1.40.0) (2026-11-10)
 
 
