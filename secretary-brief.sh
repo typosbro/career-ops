@@ -35,10 +35,24 @@ count_replies() {
   echo
 
   echo "## 1. Inbox / replies"
-  if [ -f "$ROOT/data/reply-candidates.json" ]; then
-    echo "- Reply candidates on file: **$(count_replies)**"
-    echo "- Classify and match them with \`node reply-watch.mjs\` in a session (interactive,"
-    echo "  human-in-the-loop — it recommends tracker changes and never applies them)."
+  if [ -f "$HOME/.config/msmtp/gmail.apppassword" ]; then
+    ( cd "$HERE" && timeout 240 python3 mail-fetch.py --days 3 >/dev/null 2>&1 ) || true
+    if [ -f "$ROOT/data/mail-fetch-last.json" ]; then
+      python3 -c 'import json, sys
+d = json.load(open(sys.argv[1]))
+print("- Last fetch {}: scanned {}, new {}, job-related {}".format(d["date"], d["scanned"], d["new"], d["matched"]))
+for h in d["hits"][:10]:
+    print("  - {}: {} — {}".format(h.get("folder", "INBOX"), h["from"][:42], h["subject"][:64]))
+' "$ROOT/data/mail-fetch-last.json"
+    else
+      echo "- Mailbox configured, but no fetch has completed yet."
+    fi
+    if [ -f "$ROOT/data/reply-candidates.json" ]; then
+      echo "- Reply candidates on file: **$(count_replies)** — classify with \`node reply-watch.mjs\`"
+      echo "  (interactive; recommends tracker changes, never applies them)."
+    fi
+    echo "- Fetch reads INBOX, All Mail and Trash: confirmations and rejections get archived or"
+    echo "  deleted by the owner's filters within hours, so INBOX alone under-reports."
   else
     echo "- **No mailbox connected.** Nothing is reading your mail yet, so this section is"
     echo "  empty by absence, not by silence. Nothing has been checked."
