@@ -11,6 +11,9 @@ HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT="$(cat "$HERE/.career-ops-data" 2>/dev/null || echo "$HERE")"
 DAY="${1:-$(date +%F)}"
 OUT="$ROOT/briefs/$DAY.md"
+# systemd runs this with a minimal PATH (node/grep/coreutils only); python3 and sed
+# live in the system profile, so add it rather than depend on the unit's env.
+export PATH="/run/current-system/sw/bin:/etc/profiles/per-user/${USER}/bin:$PATH"
 NODE="${NODE:-node}"
 
 mkdir -p "$ROOT/briefs" || exit 1
