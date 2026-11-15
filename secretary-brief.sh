@@ -40,6 +40,9 @@ count_replies() {
   echo "## 0. Ledger gaps (the no-exception check)"
   ( cd "$HERE" && "$NODE" --version >/dev/null 2>&1; python3 ledger.py check --summary 2>&1 | sed -n '1,15p' ) || echo "- ledger check failed to run"
   echo
+  echo "## 0b. Open signals (what people implied, unverified)"
+  ( cd "$HERE" && python3 signals.py list --open 2>&1 | sed -n '1,40p' ) || echo "- signal list failed to run"
+  echo
   echo "## 1. Inbox / replies"
   if [ -f "$HOME/.config/msmtp/gmail.apppassword" ]; then
     ( cd "$HERE" && timeout 240 python3 mail-fetch.py --days 3 >/dev/null 2>&1 ) || true
