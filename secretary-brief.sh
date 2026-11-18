@@ -38,7 +38,13 @@ count_replies() {
   echo
 
   echo "## 0. Ledger gaps (the no-exception check)"
-  ( cd "$HERE" && "$NODE" --version >/dev/null 2>&1; python3 ledger.py check --summary 2>&1 | sed -n '1,15p' ) || echo "- ledger check failed to run"
+  # ledger.py exits 1 when it finds gaps — that is the check working, not a crash.
+  # Only a higher exit code (or a missing file) means the check itself failed.
+  LEDGER_OUT="$( cd "$HERE" && python3 ledger.py check --summary 2>&1 )"; LEDGER_RC=$?
+  printf '%s\n' "$LEDGER_OUT" | sed -n '1,15p'
+  if [ "$LEDGER_RC" -gt 1 ]; then
+    echo "- ledger check failed to run (exit $LEDGER_RC)"
+  fi
   echo
   echo "## 0b. Open signals (what people implied, unverified)"
   ( cd "$HERE" && python3 signals.py list --open 2>&1 | sed -n '1,40p' ) || echo "- signal list failed to run"
@@ -86,7 +92,7 @@ for h in d["hits"][:10]:
   echo "- Pipeline pending rows: **$(grep -c '^- \[ \]' "$ROOT/data/pipeline.md" 2>/dev/null || echo '?')**"
   LAST_REPORT="$(ls "$ROOT/reports" 2>/dev/null | grep -E '^[0-9]{3}-' | sort | tail -1)"
   echo "- Newest report: **${LAST_REPORT:-none}**"
-  echo "- Outbox waiting for an explicit send: **$(ls "$ROOT/outbox"/*.eml 2>/dev/null | wc -l | tr -d ' ')**"
+  echo "- Outbox waiting for an explicit send: **$(ls "$ROOT/outbox"/*.eml 2>/dev/null | while read -r f; do b="$(basename "$f")"; grep -qF "$b" "$ROOT/outbox/sent.log" 2>/dev/null || echo "$b"; done | wc -l | tr -d ' ')**"
   echo
 
   echo "## 6. What the agent owes you in the read-out"
